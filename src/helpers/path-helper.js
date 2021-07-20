@@ -69,19 +69,23 @@ const getModelsPath = config => {
 
 const getControllerPath = (controllerName, controllerPath) => {
   return path.resolve(
-    getControllersPath(controllerPath),
+    path.resolve(process.cwd(), controllerPath),
     addFileExtension(controllerName.toLowerCase())
   );
 };
 
-const getControllersPath = controllerPath => {
-  return path.resolve(process.cwd(), controllerPath);
+const getServicePath = (serviceName, servicePath) => {
+  return path.resolve(
+    path.resolve(process.cwd(), servicePath),
+    addFileExtension(serviceName.toLowerCase())
+  );
 };
 
 module.exports = {
   getMigrationPath,
   getModelPath,
-  getControllerPath
+  getControllerPath,
+  getServicePath
 };
 
 // module.exports = {

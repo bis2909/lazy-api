@@ -90,9 +90,15 @@ const generateControllerFile = async (data, config) => {
   console.log('%s Generate controller file', chalk.green.bold('DONE'));
 };
 
+const generateServiceFile = async (data, config) => {
+  helpers.service.generateFile(data, config);
+  console.log('%s Generate service file', chalk.green.bold('DONE'));
+};
+
 module.exports = {
   createProject,
   generateMigrationFile,
   generateModelFile,
-  generateControllerFile
+  generateControllerFile,
+  generateServiceFile
 };

@@ -8,7 +8,8 @@ const getConfig = () => {
     modelPath: customConfigs.modelPath || 'models',
     controllersPath: customConfigs.controllersPath || 'controllers',
     servicesPath: customConfigs.servicesPath || 'services',
-    routesPath: customConfigs.routesPath || 'routes'
+    routesPath: customConfigs.routesPath || 'routes',
+    helpersPath: customConfigs.helpersPath || 'helpers'
   };
 };
 

@@ -8,8 +8,16 @@ const getIdVariable = name => {
   return `${_.camelCase(name)}Id`;
 };
 
+const getVariable = name => {
+  return _.camelCase(name);
+};
+
 const getRequirePath = (currentFilePath, requireFilePath, requireFileName) => {
   return `${_goToRoot(currentFilePath)}/${requireFilePath}/${requireFileName}`;
+};
+
+const getRequireHelpersModelsPath = (currentFilePath, requireFilePath) => {
+  return `${_goToRoot(currentFilePath)}/${requireFilePath}`;
 };
 
 const _goToRoot = filePath => {
@@ -28,5 +36,7 @@ const _goToRoot = filePath => {
 module.exports = {
   getServiceVariable,
   getIdVariable,
-  getRequirePath
+  getRequirePath,
+  getRequireHelpersModelsPath,
+  getVariable
 }
