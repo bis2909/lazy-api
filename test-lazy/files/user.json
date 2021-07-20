@@ -1,0 +1,11 @@
+{
+  "tableName": "users",
+  "modelName": "User",
+  "attributes": [
+    {
+      "fieldName": "email",
+      "modelName": "email",
+      "type": "string"
+    }
+  ]
+}
