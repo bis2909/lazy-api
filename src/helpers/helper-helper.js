@@ -1,32 +1,23 @@
-const _ = require('lodash');
+// const _ = require('lodash');
 const helpers = require('./index');
 
-const generateFile = (args, config) => {
-  const serviceName = generateServiceName(args);
-  const servicePath = helpers.path.getServicePath(serviceName, config.servicesPath);
+const generateApiErrorFile = (config) => {
+  const helperName = 'api-error-helper';
+  const helperPath = helpers.path.getHelperPath(helperName, config.helpersPath);
+  const template = helpers.template.renderWithoutJsBeautiful('helpers/api-error.js');
 
-  helpers.asset.write(servicePath, _generateFileContent(args, config));
+  helpers.asset.write(helperPath, template);
 };
 
-const generateServiceName = args => {
-  return _.trimStart(_.snakeCase(args.name + '_services'), '_');
-};
+const generateUtilsFile = (config) => {
+  const helperName = 'utils-helper';
+  const helperPath = helpers.path.getHelperPath(helperName, config.helpersPath);
+  const template = helpers.template.renderWithoutJsBeautiful('helpers/utils.js');
 
-const _generateFileContent = (args, config) => {
-  const servicesPath = args.servicesPath || config.servicesPath;
-  const requireHelpersPath = helpers.utils.getRequireHelpersModelsPath(servicesPath, config.helpersPath);
-  const requireModelsPath = helpers.utils.getRequireHelpersModelsPath(servicesPath, config.modelPath);
-
-  return helpers.template.render('services/services.js', {
-    requireHelpersPath: requireHelpersPath,
-    modelName: args.modelName,
-    requireModelsPath: requireModelsPath,
-    varDetail: helpers.utils.getVariable(args.name),
-    varId: helpers.utils.getIdVariable(args.name)
-  });
+  helpers.asset.write(helperPath, template);
 };
 
 module.exports = {
-  generateServiceName,
-  generateFile
+  generateApiErrorFile,
+  generateUtilsFile
 };

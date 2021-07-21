@@ -81,11 +81,19 @@ const getServicePath = (serviceName, servicePath) => {
   );
 };
 
+const getHelperPath = (helperName, helpersPath) => {
+  return path.resolve(
+    path.resolve(process.cwd(), helpersPath),
+    addFileExtension(helperName.toLowerCase())
+  );
+};
+
 module.exports = {
   getMigrationPath,
   getModelPath,
   getControllerPath,
-  getServicePath
+  getServicePath,
+  getHelperPath
 };
 
 // module.exports = {

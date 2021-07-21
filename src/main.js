@@ -95,10 +95,17 @@ const generateServiceFile = async (data, config) => {
   console.log('%s Generate service file', chalk.green.bold('DONE'));
 };
 
+const generateHelperFiles = async config => {
+  helpers.helper.generateApiErrorFile(config);
+  helpers.helper.generateUtilsFile(config);
+  console.log('%s Generate service file', chalk.green.bold('DONE'));
+};
+
 module.exports = {
   createProject,
   generateMigrationFile,
   generateModelFile,
   generateControllerFile,
-  generateServiceFile
+  generateServiceFile,
+  generateHelperFiles
 };
