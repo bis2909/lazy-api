@@ -1,4 +1,3 @@
-// const _ = require('lodash');
 const helpers = require('./index');
 
 const generateApiErrorFile = (config) => {

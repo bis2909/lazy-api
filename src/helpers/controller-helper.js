@@ -9,7 +9,7 @@ const generateFile = (args, config) => {
 };
 
 const _generateControllerName = args => {
-  return _.trimStart(_.snakeCase(args.name + '_controllers'), '_');
+  return _.trimStart(_.kebabCase(args.name + '-controllers'), '-');
 };
 
 const _generateFileContent = (args, config) => {

@@ -9,7 +9,7 @@ const generateFile = (args, config) => {
 };
 
 const generateServiceName = args => {
-  return _.trimStart(_.snakeCase(args.name + '_services'), '_');
+  return _.trimStart(_.kebabCase(args.name + '-services'), '-');
 };
 
 const _generateFileContent = (args, config) => {

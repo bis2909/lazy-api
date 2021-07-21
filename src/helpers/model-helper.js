@@ -1,7 +1,8 @@
+const _ = require('lodash');
 const helpers = require('./index');
 
 const generateFile = (args, config) => {
-  const modelPath = helpers.path.getModelPath(args.name, config);
+  const modelPath = helpers.path.getModelPath(_.kebabCase(args.name), config);
 
   helpers.asset.write(modelPath, _generateFileContent(args));
 };

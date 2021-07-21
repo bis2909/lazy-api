@@ -82,10 +82,10 @@ exports.cli = async args => {
   const config = getConfig();
   console.log('data: ', data);
   console.log('config: ', config);
-  // generateMigrationFile(data, config);
-  // generateModelFile(data, config);
-  // generateControllerFile(data, config);
-  // generateServiceFile(data, config);
+  generateMigrationFile(data, config);
+  generateModelFile(data, config);
+  generateControllerFile(data, config);
+  generateServiceFile(data, config);
   generateHelperFiles(config);
 
   // await createProject(options);
