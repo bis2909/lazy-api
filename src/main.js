@@ -98,7 +98,12 @@ const generateServiceFile = async (data, config) => {
 const generateHelperFiles = async config => {
   helpers.helper.generateApiErrorFile(config);
   helpers.helper.generateUtilsFile(config);
-  console.log('%s Generate service file', chalk.green.bold('DONE'));
+  console.log('%s Generate helper file', chalk.green.bold('DONE'));
+};
+
+const generateRouteFile = async (data, config) => {
+  helpers.routes.generateFile(data, config);
+  console.log('%s Generate route file', chalk.green.bold('DONE'));
 };
 
 module.exports = {
@@ -107,5 +112,6 @@ module.exports = {
   generateModelFile,
   generateControllerFile,
   generateServiceFile,
-  generateHelperFiles
+  generateHelperFiles,
+  generateRouteFile
 };

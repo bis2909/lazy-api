@@ -2,13 +2,13 @@ const _ = require('lodash');
 const helpers = require('./index');
 
 const generateFile = (args, config) => {
-  const controllerName = _generateControllerName(args);
-  const controllerPath = helpers.path.getControllerPath(controllerName, args.controllersPath || config.controllersPath);
+  const controllerName = generateControllerName(args);
+  const controllerPath = helpers.path.getPathWithName(controllerName, args.controllersPath || config.controllersPath);
 
   helpers.asset.write(controllerPath, _generateFileContent(args, config));
 };
 
-const _generateControllerName = args => {
+const generateControllerName = args => {
   return _.trimStart(_.kebabCase(args.name + '-controllers'), '-');
 };
 
@@ -26,5 +26,6 @@ const _generateFileContent = (args, config) => {
 };
 
 module.exports = {
-  generateFile
+  generateFile,
+  generateControllerName
 };

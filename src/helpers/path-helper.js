@@ -67,33 +67,17 @@ const getModelsPath = config => {
   return path.resolve(process.cwd(), config.modelPath);
 };
 
-const getControllerPath = (controllerName, controllerPath) => {
+const getPathWithName = (currentName, currentPath) => {
   return path.resolve(
-    path.resolve(process.cwd(), controllerPath),
-    addFileExtension(controllerName.toLowerCase())
-  );
-};
-
-const getServicePath = (serviceName, servicePath) => {
-  return path.resolve(
-    path.resolve(process.cwd(), servicePath),
-    addFileExtension(serviceName.toLowerCase())
-  );
-};
-
-const getHelperPath = (helperName, helpersPath) => {
-  return path.resolve(
-    path.resolve(process.cwd(), helpersPath),
-    addFileExtension(helperName.toLowerCase())
+    path.resolve(process.cwd(), currentPath),
+    addFileExtension(currentName.toLowerCase())
   );
 };
 
 module.exports = {
   getMigrationPath,
   getModelPath,
-  getControllerPath,
-  getServicePath,
-  getHelperPath
+  getPathWithName
 };
 
 // module.exports = {

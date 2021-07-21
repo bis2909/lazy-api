@@ -1,6 +1,9 @@
 const arg = require('arg');
 const inquirer = require('inquirer');
-const { generateMigrationFile, generateModelFile, generateControllerFile, generateServiceFile, generateHelperFiles } = require('./main');
+const {
+  generateMigrationFile, generateModelFile, generateControllerFile,
+  generateServiceFile, generateHelperFiles, generateRouteFile
+} = require('./main');
 const { parseJson } = require('./helpers/json-helper');
 const { getConfig } = require('./helpers/config-helper');
 
@@ -82,11 +85,12 @@ exports.cli = async args => {
   const config = getConfig();
   console.log('data: ', data);
   console.log('config: ', config);
-  generateMigrationFile(data, config);
-  generateModelFile(data, config);
-  generateControllerFile(data, config);
-  generateServiceFile(data, config);
-  generateHelperFiles(config);
+  // generateMigrationFile(data, config);
+  // generateModelFile(data, config);
+  // generateControllerFile(data, config);
+  // generateServiceFile(data, config);
+  // generateHelperFiles(config);
+  generateRouteFile(data, config);
 
   // await createProject(options);
 };

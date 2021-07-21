@@ -3,7 +3,7 @@ const helpers = require('./index');
 
 const generateFile = (args, config) => {
   const serviceName = generateServiceName(args);
-  const servicePath = helpers.path.getServicePath(serviceName, config.servicesPath);
+  const servicePath = helpers.path.getPathWithName(serviceName, config.servicesPath);
 
   helpers.asset.write(servicePath, _generateFileContent(args, config));
 };

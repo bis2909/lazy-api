@@ -15,7 +15,13 @@ const getPagingData = (data, limit, start) => {
   return { total: count, start: start || 0, ...(limit && {count: limit}), data: rows };
 };
 
+const isEmail = email => {
+  const emailRegexp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/;
+  return emailRegexp.test(email);
+};
+
 module.exports = {
   getPagination,
-  getPagingData
+  getPagingData,
+  isEmail
 };
