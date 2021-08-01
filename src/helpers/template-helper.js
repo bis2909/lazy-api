@@ -24,7 +24,6 @@ const render = (path, locals, options) => {
 
 const renderWithoutJsBeautiful = (path) => {
   return helpers.asset.read(path);
-  // return _.template(template)(locals || {});
 };
 
 module.exports = {

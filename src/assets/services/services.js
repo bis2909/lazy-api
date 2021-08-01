@@ -1,6 +1,6 @@
-const ApiError = require('<%= requireHelpersPath %>/api_error');
+const ApiError = require('<%= requireHelpersPath %>/api-error-helper');
 const { <%= modelName %> } = require('<%= requireModelsPath %>');
-const utilsHelper = require('<%= requireHelpersPath %>/utils');
+const utilsHelper = require('<%= requireHelpersPath %>/utils-helper');
 
 const getList = async query => {
   const {start, count, filter} = query;
@@ -24,7 +24,7 @@ const getDetail = async <%= varId %> => {
 
   if (!<%= varDetail %>) throw new ApiError('<%= modelName %> not found!', 404);
 
-  return { code: 200, resp: {data: <%= varDetail %>} };
+  return { code: 200, resp: <%= varDetail %> };
 };
 
 const create = async params => {
@@ -32,7 +32,7 @@ const create = async params => {
 
   const <%= varDetail %> = await <%= modelName %>.create(params);
 
-  return { code: 200, resp: {data: <%= varDetail %>} };
+  return { code: 200, resp: <%= varDetail %> };
 };
 
 const update = async (<%= varId %>, params) => {
@@ -41,7 +41,7 @@ const update = async (<%= varId %>, params) => {
 
   await <%= varDetail %>.update(params);
 
-  return { code: 200, resp: {data: <%= varDetail %>} };
+  return { code: 200, resp: <%= varDetail %> };
 };
 
 const destroy = async (<%= varId %>, admin) => {

@@ -19,16 +19,12 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "arg": "^5.0.0",
     "chalk": "^4.1.1",
     "esm": "^3.2.25",
-    "execa": "^5.1.0",
     "fs-extra": "^10.0.0",
-    "inquirer": "^8.1.0",
     "js-beautify": "^1.13.13",
-    "listr": "^0.14.3",
     "lodash": "^4.17.21",
-    "ncp": "^2.0.0",
-    "pkg-install": "^1.0.0"
+    "pluralize": "^8.0.0",
+    "yargs": "^17.0.1"
   }
 }

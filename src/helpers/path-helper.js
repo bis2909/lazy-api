@@ -1,29 +1,23 @@
-// import path from 'path';
-// import fs from 'fs';
+
 const path = require('path');
 
-// const resolve = require('resolve').sync;
-// import getYArgs from '../core/yargs';
-
-// const args = getYArgs().argv;
-
-const format = i => {
+const _format = i => {
   return parseInt(i, 10) < 10 ? '0' + i : i;
 };
 
-const getCurrentYYYYMMDDHHmms = () => {
+const _getCurrentYYYYMMDDHHmms = () => {
   const date = new Date();
   return [
     date.getUTCFullYear(),
-    format(date.getUTCMonth() + 1),
-    format(date.getUTCDate()),
-    format(date.getUTCHours()),
-    format(date.getUTCMinutes()),
-    format(date.getUTCSeconds()),
+    _format(date.getUTCMonth() + 1),
+    _format(date.getUTCDate()),
+    _format(date.getUTCHours()),
+    _format(date.getUTCMinutes()),
+    _format(date.getUTCSeconds()),
   ].join('');
 };
 
-const getPath = config => {
+const _getPath = config => {
   let result = path.resolve(process.cwd(), config.migrationPath);
 
   if (path.normalize(result) !== path.resolve(result)) {
@@ -34,43 +28,43 @@ const getPath = config => {
   return result;
 };
 
-const addFileExtension = (basename, options) => {
-  return [basename, getFileExtension(options)].join('.');
+const _addFileExtension = (basename, options) => {
+  return [basename, _getFileExtension(options)].join('.');
 };
 
 const getMigrationPath = (migrationName, config) => {
   return path.resolve(
-    getPath(config),
-    getFileName('migration', migrationName)
+    _getPath(config),
+    _getFileName('migration', migrationName)
   );
 };
 
-const getFileName = (type, name, options) => {
-  return addFileExtension(
-    [getCurrentYYYYMMDDHHmms(), name ? name : 'unnamed-' + type].join('-'),
+const _getFileName = (type, name, options) => {
+  return _addFileExtension(
+    [_getCurrentYYYYMMDDHHmms(), name ? name : 'unnamed-' + type].join('-'),
     options
   );
 };
 
-const getFileExtension = () => {
+const _getFileExtension = () => {
   return 'js';
 };
 
 const getModelPath = (modelName, config) => {
   return path.resolve(
-    getModelsPath(config),
-    addFileExtension(modelName.toLowerCase())
+    _getModelsPath(config),
+    _addFileExtension(modelName.toLowerCase())
   );
 };
 
-const getModelsPath = config => {
+const _getModelsPath = config => {
   return path.resolve(process.cwd(), config.modelPath);
 };
 
 const getPathWithName = (currentName, currentPath) => {
   return path.resolve(
     path.resolve(process.cwd(), currentPath),
-    addFileExtension(currentName.toLowerCase())
+    _addFileExtension(currentName.toLowerCase())
   );
 };
 
@@ -79,88 +73,3 @@ module.exports = {
   getModelPath,
   getPathWithName
 };
-
-// module.exports = {
-//   getPath(type) {
-//     type = type + 's';
-
-//     let result = args[type + 'Path'] || path.resolve(process.cwd(), type);
-
-//     if (path.normalize(result) !== path.resolve(result)) {
-//       // the path is relative
-//       result = path.resolve(process.cwd(), result);
-//     }
-
-//     return result;
-//   },
-
-//   getFileName(type, name, options) {
-//     return this.addFileExtension(
-//       [getCurrentYYYYMMDDHHmms(), name ? name : 'unnamed-' + type].join('-'),
-//       options
-//     );
-//   },
-
-//   getFileExtension() {
-//     return 'js';
-//   },
-
-//   addFileExtension(basename, options) {
-//     return [basename, this.getFileExtension(options)].join('.');
-//   },
-
-//   getMigrationPath(migrationName) {
-//     return path.resolve(
-//       this.getPath('migration'),
-//       this.getFileName('migration', migrationName)
-//     );
-//   },
-
-//   getSeederPath(seederName) {
-//     return path.resolve(
-//       this.getPath('seeder'),
-//       this.getFileName('seeder', seederName)
-//     );
-//   },
-
-//   getModelsPath() {
-//     return args.modelsPath || path.resolve(process.cwd(), 'models');
-//   },
-
-//   getModelPath(modelName) {
-//     return path.resolve(
-//       this.getModelsPath(),
-//       this.addFileExtension(modelName.toLowerCase())
-//     );
-//   },
-
-//   resolve(packageName) {
-//     let result;
-
-//     try {
-//       result = resolve(packageName, { basedir: process.cwd() });
-//       result = require(result);
-//     } catch (e) {
-//       try {
-//         result = require(packageName);
-//       } catch (err) {
-//         // ignore error
-//       }
-//     }
-
-//     return result;
-//   },
-
-//   existsSync(pathToCheck) {
-//     if (fs.accessSync) {
-//       try {
-//         fs.accessSync(pathToCheck, fs.R_OK);
-//         return true;
-//       } catch (e) {
-//         return false;
-//       }
-//     } else {
-//       return fs.existsSync(pathToCheck);
-//     }
-//   },
-// };

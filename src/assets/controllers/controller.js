@@ -4,7 +4,7 @@ const index = async (req, res) => {
   try {
     const responses = await <%= servicesName %>.getList(req.query);
 
-    return res.status(200).send({data: responses});
+    return res.status(200).send(responses);
   } catch (error) {
     return res.status(error.statusCode || 422).send({ error: error.message });
   }

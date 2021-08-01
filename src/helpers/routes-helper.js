@@ -2,13 +2,13 @@ const _ = require('lodash');
 const helpers = require('./index');
 
 const generateFile = (args, config) => {
-  const routeName = _generateRouteName(args);
+  const routeName = generateRouteName(args);
   const routePath = helpers.path.getPathWithName(routeName, args.routePath || config.routesPath);
 
   helpers.asset.write(routePath, _generateFileContent(args, config));
 };
 
-const _generateRouteName = args => {
+const generateRouteName = args => {
   return _.trimStart(_.kebabCase(args.name), '-');
 };
 
@@ -24,5 +24,6 @@ const _generateFileContent = (args, config) => {
 };
 
 module.exports = {
-  generateFile
+  generateFile,
+  generateRouteName
 };

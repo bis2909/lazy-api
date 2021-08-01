@@ -13,8 +13,9 @@ const assets = {
   },
 
   write: (targetPath, content) => {
-    const regex = /\,(?!\s*?[\{\[\"\'\w])/g;
-    fs.writeFileSync(targetPath, content.replace(regex, ''));
+    // const regex = /\,(?!\s*?[\{\[\"\'\w])/g;
+    // fs.writeFileSync(targetPath, content.replace(regex, ''));
+    fs.writeFileSync(targetPath, content);
   },
 
   inject: (filePath, token, content) => {
