@@ -10,13 +10,13 @@ Fast generate CRUD api. Use for [express](https://github.com/expressjs/express),
 ## Installation
 
 ```bash
-npm install --save-dev lazy-api
+npm install --save-dev lazy-express-api
 ```
 
 And then you should be able to run the CLI with
 
 ```bash
-npx lazy-api --help
+npx lazy-express-api --help
 ```
 
 ### Usage
@@ -85,7 +85,7 @@ Example `lazy-api/json-files/post.json`
 Example run Generate CRUD:
 
 ```bash
-npx lazy-api all --path lazy-api/json-files/post.json
+npx lazy-express-api all --path lazy-api/json-files/post.json
 ```
 
 ### Helper files
@@ -93,5 +93,5 @@ npx lazy-api all --path lazy-api/json-files/post.json
 To run CRUD require some helper files (api-error-helper.js, utils-helper.js). To generate:
 
 ```bash
-npx lazy-api helpers
+npx lazy-express-api helpers
 ```
