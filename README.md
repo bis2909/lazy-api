@@ -95,3 +95,7 @@ To run CRUD require some helper files (api-error-helper.js, utils-helper.js). To
 ```bash
 npx lazy-express-api helpers
 ```
+
+## Demo
+
+You can visit [https://github.com/bis2909/lazy-api-example](https://github.com/bis2909/lazy-api-example)
